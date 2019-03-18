@@ -1,0 +1,51 @@
+page-home{
+    .home-header{
+        .nombre{
+            font-size: large !important;
+        }
+        p{
+            margin-top: 6px;
+            margin-bottom: 6px;
+            font-weight: 500;
+            line-height: 24px;
+            span{
+                font-weight: 400;
+            }
+        }
+
+    }
+    ion-card{
+        .card-footer{
+            border-top: 1px #acacac4f solid;
+        }
+        button{
+            font-size: 1.2rem !important;
+        }
+        ion-item{
+            cursor: pointer;
+
+        }
+        .nombre-evento{
+            color: #030303;
+          
+            font-size: 16px;
+            font-weight: 500;
+            padding-left: 17px;
+        }
+        .fecha-evento{
+            padding-left: 15px;
+            font-weight: 300;
+            font-size: 12px;
+        }
+        .listas{
+            color: #666666;	
+            font-size: 13px;	
+          
+        }
+        .mia{
+            color: #000;
+            font-weight: 700;
+        }
+    }
+}
+

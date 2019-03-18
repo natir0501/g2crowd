@@ -1,0 +1,17 @@
+page-saldos-plantel {
+    .item-icon{
+        margin-left: 20px !important;
+    }
+    .btn-print{
+        background: transparent;
+        box-shadow: none;
+        color: black;
+        margin-right: 20px;
+        
+    }
+    ion-item, ion-item-divider{
+        .button-md:hover:not(.disable-hover) {
+            background-color: #9c9da700;
+        }
+    }
+}

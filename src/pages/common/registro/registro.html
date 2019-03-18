@@ -1,0 +1,143 @@
+<!--
+  Generated template for the RegistroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar text-center color="primary">
+    <ion-title>Registro en CEIApp</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="page5">
+  <form id="registro-form4" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <div id="registro-markdown6" class="show-list-numbers-and-dots">
+            <p class="title">
+              Bienvenido, por favor complete el registro:
+            </p>
+          </div>
+          <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+          <ion-item-divider color="light" id="registro-list-item-divider8">
+            Datos Generales:
+          </ion-item-divider>
+          <ion-item [ngClass]="{ 'ng-touched' : nombre.touched }" fixed id="registro-input15">
+            <ion-label>
+              Nombre
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: Carlos" name="nombre" [(ngModel)]="usuario.nombre"
+              #nombre="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : apellido.touched }" id="registro-input17" [ngClass]="{ 'ng-touched' : apellido.touched }">
+            <ion-label>
+              Apellido
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: Romano" name="apellido" [(ngModel)]="usuario.apellido"
+              #apellido="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : documento.touched }" id="registro-input26">
+            <ion-label>
+              C.I.
+            </ion-label>
+            <ion-input text-right type="text" #documento="ngModel" pattern="^[0-9]{8}$" placeholder="Ej: 12345678" name="documento"
+              [(ngModel)]="usuario.ci" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : celular.touched }" id="registro-input18">
+            <ion-label>
+              Celular:
+            </ion-label>
+            <ion-input text-right type="text" #celular="ngModel" pattern="^[0-9]{9}$" placeholder="Ej: 099123456" name="celular"
+              [(ngModel)]="usuario.celular" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : direccion.touched }" id="registro-input19">
+            <ion-label>
+              Dirección:
+            </ion-label>
+            <ion-input text-right type="text" #direccion="ngModel" placeholder="Ej: Verdi 1234" name="direccion"
+              [(ngModel)]="usuario.direccion" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : password.touched }" id="registro-input25">
+            <ion-label>
+              Password:
+            </ion-label>
+            <ion-input text-right type="password" pattern="^(?=.*?[a-z])(?=.*?[0-9]).{8,}$" #password="ngModel" placeholder=""
+              name="password" [(ngModel)]="usuario.password" required></ion-input>
+          </ion-item>
+          <div class="error-message" *ngIf="password.touched && password.invalid">La contraseña debe ser alfanumérica
+            de largo mínimo 8</div>
+          <div class="spacer" style="width:300px;height:9px;" id="registro-spacer9"></div>
+          <ion-item-divider color="light" id="registro-list-item-divider9">
+            Datos Complementarios:
+          </ion-item-divider>
+          <ion-item [ngClass]="{ 'ng-touched' : fnacimiento.touched }" id="registro-input21">
+            <ion-label>
+              Fecha Nacimiento:
+            </ion-label>
+            <ion-input text-right type="date" placeholder="" #fnacimiento="ngModel" name="fnacmiento" [(ngModel)]="fechaNacTxt"
+              required></ion-input>
+          </ion-item>
+
+          <ion-item [ngClass]="{ 'ng-touched' : tieneFmCs.touched }" id="registro-toggle3">
+            <ion-label>
+              C/Salud o F/Médica Vigente
+            </ion-label>
+            <ion-toggle color="positive" #tieneFmCs="ngModel" name="tieneFmCs" [(ngModel)]="fmedicaVigente" required></ion-toggle>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : fvencimiento.touched }" id="registro-input20" *ngIf="fmedicaVigente">
+            <ion-label>
+              Fecha Vencimiento
+            </ion-label>
+            <ion-input text-right type="date" #fvencimiento="ngModel" placeholder="Ej: 01/01/2020" name="fvencimiento"
+              [(ngModel)]="fechaVtoTxt" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : sociedad.touched }" id="registro-input23">
+            <ion-label>
+              Sociedad Médica:
+            </ion-label>
+            <ion-input text-right type="text" #sociedad="ngModel" placeholder="Ej: Casmu" name="sMedica" [(ngModel)]="usuario.sociedad"
+              required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : eMovil.touched }" id="registro-input22">
+            <ion-label>
+              Emerg. Móvil:
+            </ion-label>
+            <ion-input text-right type="text" #eMovil="ngModel" placeholder="Ej: SEMM" name="eMovil" [(ngModel)]="usuario.emergencia"
+              required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : contacto.touched }" id="registro-input27">
+            <ion-label>
+              Contacto Em.
+            </ion-label>
+            <ion-input text-right type="text" #contacto="ngModel" placeholder="Ej: Papá (099123456)" name="cEmergencia"
+              [(ngModel)]="usuario.contacto" required></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : posiciones.touched }" id="registro-select2">
+            <ion-label>
+              Posiciones:
+            </ion-label>
+            <ion-select okText="Ok" cancelText="Cancelar" multiple="true" required [(ngModel)]="usuario.posiciones"
+              name="posiciones" [selectedText]="usuario.posiciones.join(', ')">
+              <ion-option *ngFor="let pos of posiciones" [id]="pos.id" [value]="pos.id">{{pos.value}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <div class="spacer" style="width:300px;height:14px;" id="registro-spacer10"></div>
+
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button [disabled]="form.form.invalid" type="submit" ion-button="" block color="positive">
+            Aceptar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

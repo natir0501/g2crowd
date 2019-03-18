@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+     Tipos de Eventos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <div id="tipoEventos-markdown3" class="show-list-numbers-and-dots">
+            <p style="color:#000000;">
+              A continuación se listan los tipos de eventos  existentes en el sistema.
+              <br>
+              Para agregar nuevos seleccione la opción "Nuevo tipo de evento" para editar un tipo de evento deslice el registro
+              hacia la izquierda y seleccione "Modificar".
+            </p>
+          </div>
+          <ion-item-divider color="light" id="tipoEventos-list-item-divider3">
+            Listado de tipo de eventos:
+          </ion-item-divider>
+          <ion-list>
+            <ion-item-sliding *ngFor="let tip of tEventos">
+              <ion-item color="none" id="tip._id" icon-start>
+                <ion-icon name="calendar" item-left></ion-icon>
+                {{tip.nombre}}
+              </ion-item>
+              <ion-item-options side="right" >
+                <button ion-button color="positive" (click)="modificarTipoEvento(tip)">
+                  Modificar
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button id="tipoEventos-button4"  (click)="altaTipoEvento()"  ion-button block color="positive">
+            Nuevo tipo de evento
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

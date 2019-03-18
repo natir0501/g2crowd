@@ -1,0 +1,144 @@
+<!--
+  Generated template for the MantenimientoCategoriaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Detalles Evento
+    </ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="page5">
+
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="registro-markdown6" class="show-list-numbers-and-dots">
+          <p class="title">
+            Los detalles del evento son:
+          </p>
+        </div>
+        <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+        <ion-item-divider color="light" id="registro-list-item-divider8">
+          Datos Generales:
+        </ion-item-divider>
+        <ion-item>
+          <ion-icon name="calendar"></ion-icon>
+          <b>Nombre: </b><span item-end>{{evento.nombre}}</span>
+        </ion-item>
+        <ion-item *ngIf="evento.categoria.nombre">
+          <ion-icon name="football"></ion-icon>
+          <b>Categoria: </b><span item-end>{{evento.categoria.nombre}}</span>
+        </ion-item>
+        <ion-item *ngIf="evento.tipoEvento.nombre">
+          <ion-icon name="clipboard"></ion-icon>
+          <b>Evento: </b><span item-end>{{evento.tipoEvento.nombre}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="clock"></ion-icon>
+          <b>Día y hora: </b><span item-end>{{diayhora()}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="flag"></ion-icon>
+          <b>Lugar: </b><span item-end>{{evento.lugar.nombre}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="home"></ion-icon>
+          <b>Dirección: </b><span item-end>{{evento.lugar.direccion}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="navigate"></ion-icon>
+          <b>Ubicación: </b><span item-end><a target="_blank" [href]="evento.lugar.linkUbicacion">Ver en mapa</a></span>
+        </ion-item>
+
+        <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+
+
+
+
+        <ion-item-divider color="light">
+          Pendientes{{' ('+ evento.invitados.length + ')'}}
+         
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('convocados')">{{btnConvocados}}</button>
+
+        </ion-item-divider>
+        <ng-container *ngIf="verConvocados">
+          <ion-item *ngFor="let usu of evento.invitados" fixed icon-end>
+
+            {{descUsu(usu)}}
+
+          </ion-item>
+        </ng-container>
+        <ion-item-divider color="light">
+          Van{{' ('+ evento.confirmados.length + ')'}}
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('van')">{{btnVan}}</button>
+
+        </ion-item-divider>
+        <ng-container *ngIf="verVan">
+          <ion-item *ngFor="let usu of evento.confirmados" fixed icon-end>
+
+            {{descUsu(usu)}}
+
+          </ion-item>
+        </ng-container>
+        <ion-item-divider color="light">
+          Duda{{' ('+ evento.duda.length + ')'}}
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('duda')">{{btnDuda}}</button>
+
+        </ion-item-divider>
+        <ng-container *ngIf="verDuda">
+          <ion-item *ngFor="let usu of evento.duda" fixed icon-end>
+
+            {{descUsu(usu)}}
+
+          </ion-item>
+        </ng-container>
+        <ion-item-divider color="light">
+          No van{{' ('+ evento.noAsisten.length + ')'}}
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('noVan')">{{btnNoVan}}</button>
+
+        </ion-item-divider>
+        <ng-container *ngIf="verNoVan">
+          <ion-item *ngFor="let usu of evento.noAsisten" fixed icon-end>
+
+            {{descUsu(usu)}}
+
+          </ion-item>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+    <ion-row justify-content-center *ngIf="convocado() ">
+      <ion-col col-xl-2>
+        <button type="button"  ion-button="" block color="positive"  [disabled]="!puedoNoIr()" (click)="confirmar(false)">
+          No Voy
+        </button>
+      </ion-col>
+      <ion-col col-xl-2>
+        <button type="submit" ion-button="" block color="positive"  [disabled]="!puedoDudar()" (click)="confirmar(undefined)">
+          Duda
+        </button>
+      </ion-col>
+
+      <ion-col col-xl-2>
+        <button type="submit" ion-button="" block color="positive"  [disabled]="!puedoIr()" (click)="confirmar(true)">
+          Voy
+        </button>
+      </ion-col>
+
+    </ion-row>
+   
+  </ion-grid>
+
+</ion-content>

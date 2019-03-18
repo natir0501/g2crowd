@@ -1,0 +1,58 @@
+<ion-menu  [content]="content">
+    <ion-content class="menu">
+
+        <div class="avatar-list">
+            <div class="avatar-content">
+                <ion-list>
+                    <img data-src="{{avatar}}" class="avatar" (click)="home()">
+
+                    <p *ngIf="usuario" class="user">{{usuario.nombre}}</p>
+                    <p *ngIf="usuario && roles.length>0" class="role">{{roles.join(', ')}}</p>
+                    <p *ngIf="usuario && roles.length>0" class="nombre-cat">{{nombreCategoria}}</p>
+                </ion-list>
+            </div>
+            <div class="avatar-shadow"></div>
+        </div>
+
+        <ion-list>
+            <div *ngFor="let p of pages">
+                <button ion-item no-lines (click)="openPage(p)" href="www.google.com" style="border:0px" [ngClass]="{active: isSubmenuShown(p)}"
+                    icon-left>
+                    <ion-icon [ngClass]="{'menu-info': menuAyuda(p.title)}" name="{{p.icon}}"></ion-icon>
+                    {{p.title}}
+                  <!--   <span *ngIf="p.right_icon" item-right>
+                        <ion-badge class="menu-icon">
+                            <ion-icon [name]="isSubmenuShown(p) ? 'remove' : 'add'"></ion-icon>
+                        </ion-badge>
+                    </span>
+                    <span *ngIf="p.badge_value" item-right>
+                        <ion-badge class="badge-value">{{p.badge_value}}</ion-badge>
+                    </span> -->
+                </button>
+
+                <button ion-item detail-none no-lines class="sub-items" *ngFor="let s of p.sub" (click)="openPage(s)"
+                    [hidden]="!isSubmenuShown(p)">
+                    {{s.sub_title}}
+                    <span *ngIf="s.badge_value" item-right>
+                        <ion-badge class="badge-value">{{s.badge_value}}</ion-badge>
+                    </span>
+                </button>
+
+            </div>
+
+
+        </ion-list>
+
+    </ion-content>
+
+    <ion-footer *ngIf="usuario" >
+        <ion-toolbar color="#dedee4">
+            <ion-title (click)="logout()" class="salir" icon-left>
+                <ion-icon name="log-out"></ion-icon>
+                Cerrar sesión
+            </ion-title>
+        </ion-toolbar>
+    </ion-footer>
+</ion-menu>
+
+<ion-nav [root]="rootPage" swipeBackEnabled="false" #content></ion-nav>

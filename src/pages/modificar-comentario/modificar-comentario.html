@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Modifcación de comentario DT
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="altaConceptosDeCaja-markdown3" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">
+            Ingresa los comentarios correspondientes al evento {{evento.nombre}} para el jugador
+            <b>{{usuario.nombre +' '+ usuario.apellido}}</b>
+
+          </p>
+        </div>
+        <ion-item-divider color="light" id="altaConceptosDeCaja-list-item-divider3">
+          Comentarios:
+        </ion-item-divider>
+        <ion-list>
+
+          <ion-item>
+            <ion-textarea placeholder="Ingresar comentario" [(ngModel)]="comentario" rows="6"></ion-textarea>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+    <ion-row justify-content-center>
+      <ion-col col-xl-2>
+        <button ion-button="" (click)="guardar()" block color="positive">
+          Guardar
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

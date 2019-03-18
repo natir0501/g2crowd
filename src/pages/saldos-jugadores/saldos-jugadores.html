@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Saldo por jugador</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form id='form' #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <ion-list>
+            <div>
+              <p>
+                Seleccione un jugador para consultar su saldo y movimientos registrados en el sistema.
+              </p>
+            </div>
+            <ion-item>
+              <ion-label>
+                Jugador:
+              </ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" (ionChange)="seleccionado($event)"
+               required [(ngModel)]="jugador" name="jugador" placeholder="Seleccione jugador">
+                <ion-option *ngFor="let u of usuarios" [id]="u._id" [value]="u">
+                  {{u.nombre}} {{u.apellido}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+     
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <ion-list>
+            <ng-container *ngIf="cuentaJugador!=null">
+              <ion-item-divider color="light" id="sdomovscat1">
+                Cuenta de {{jugador.nombre}} {{jugador.apellido}}
+              </ion-item-divider>
+              <ion-item>
+                Saldo: <span item-end> $ {{cuentaJugador.saldo}}</span>
+              </ion-item>
+              <ion-item-divider color="light" id="sdomovscat2">
+                Movimientos:
+              </ion-item-divider>
+              <ion-list>
+                <ion-item-sliding *ngFor="let mov of cuentaJugador.movimientos">
+                  <ion-item color="none" id="mov._id" icon-start>
+                    <ion-icon name="calculator" item-left></ion-icon>
+                    <label><b>Fecha:</b></label> {{mov.fecha | date:'dd-MM-yyyy'}} <br>
+                    <label><b>Monto:</b></label> $ {{mov.monto}}<br>
+                    <label><b>Estado:</b></label> $ {{mov.estado}}<br>
+                  </ion-item>
+                  <ion-item-options side="right">
+                    <button ion-button color="positive" (click)="verDetalle(mov,cuentaJugador)">
+                      Ver Detalle
+                    </button>
+                  </ion-item-options>
+                </ion-item-sliding>
+              </ion-list>
+            </ng-container>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

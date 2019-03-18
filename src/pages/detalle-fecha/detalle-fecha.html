@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Detalles de fecha
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="registro-markdown6" class="show-list-numbers-and-dots">
+          <p class="title">
+            Se muestran los detalles de la fecha. <br><br>
+            En caso que se muestre, podés crear un evento para esta fecha haciendo click en el ícono de calendario.
+          </p>
+        </div>
+        <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+        <ion-item-divider color="light" id="registro-list-item-divider8">
+          Datos Generales:
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="nuevoEvento()" icon-only *ngIf="puedoCrearEvento()">
+            <ion-icon name="calendar" icon-right></ion-icon>
+          </button>
+        </ion-item-divider>
+        <ion-item>
+          <ion-icon name="add-circle"></ion-icon>
+          <b>Numero: </b><span item-end>{{fecha.numeroFecha}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="calendar"></ion-icon>
+          <b>Día y hora: </b><span item-end>{{diayhora()}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="trophy"></ion-icon>
+          <b>Rueda: </b><span item-end>{{fecha.rueda}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="football"></ion-icon>
+          <b>Rival: </b><span item-end>{{fecha.partido.rival}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="contrast"></ion-icon>
+          <b>Condición: </b><span item-end >{{fecha.partido.local? 'Locales' : 'Visitantes'}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="flag"></ion-icon>
+          <b>Lugar: </b><span item-end>{{fecha.partido.lugar.nombre}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="home"></ion-icon>
+          <b>Dirección: </b><span item-end>{{fecha.partido.lugar.direccion}}</span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="navigate"></ion-icon>
+          <b>Ubicación: </b><span item-end><a target="_blank" [href]="fecha.partido.lugar.linkUbicacion">Ver en mapa</a></span>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

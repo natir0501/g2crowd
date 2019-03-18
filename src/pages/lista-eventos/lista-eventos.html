@@ -1,0 +1,73 @@
+<!--
+  Generated template for the ListaEventosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Agenda
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="page5">
+
+  <ion-grid>
+
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="registro-markdown6" class="show-list-numbers-and-dots">
+          <p class="title">
+            Se visualiza la Agenda con los eventos ingresados. Para ver detalles del evento, seleccione
+            fecha y deslice en el evento correspondiente.
+          </p>
+        </div>
+        <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+        <ion-calendar [events]="currentEvents" #calendar lang="es" (onDaySelect)="onDateSelected($event)"
+          (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+        <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+        <ion-item-divider *ngIf="eventosDelDia.length > 0" color="light">
+          Eventos en el dia:
+        </ion-item-divider>
+        <ion-list>
+          <ion-item-sliding *ngFor="let evt of eventosDelDia">
+            <ion-item color="none" icon-start>
+              <ion-icon name="football" item-left></ion-icon>
+              <ion-label  >{{evt.nombre + ' - ' + evt.lugar.nombre  }}</ion-label>
+              <ion-label class="cat-label" text-right> {{labelCategoria(evt.categoria.nombre)}} </ion-label>
+            </ion-item>
+            <ion-item-options side="right">
+              <button *ngIf="registrosDT(evt) && evt.tipoEvento.datosDeportivos" ion-button color="positive" (click)="registrar(evt)">
+                Comentarios
+              </button>
+              <button ion-button color="positive" (click)="detalles(evt)">
+                Consultar
+              </button>
+              <button *ngIf="esDelegado() && puedeEditar(evt)" (click)="editarEvento(evt)" ion-button color="positive">
+                Editar
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+    <ion-row justify-content-center>
+      <ion-col col-xl-2>
+        <button *ngIf="esDelegado() && puedeCrear()" type="submit" ion-button="" (click)="altaEvento()" block color="positive">
+          Nuevo
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

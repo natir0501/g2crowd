@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>tuEquipo App</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="icon" type="image/x-icon" href="assets/icon/tu_equipo16x16.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#006e81">
+
+  <!-- icon ios -->
+  <link rel="apple-touch-icon" href="assets/imgs/single-page-icon.png">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- iPhone X (1125px x 2436px) -->
+
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+    href="assets/imgs/apple-launch-1125x2436.png">
+  <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+    href="assets/imgs/apple-launch-750x1334.png">
+  <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)"
+    href="assets/imgs/apple-launch-1242x2208.png">
+  <!-- iPhone 5 (640px x 1136px) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+    href="assets/imgs/apple-launch-640x1136.png">
+  <!-- iPad Mini, Air (1536px x 2048px) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+    href="assets/imgs/apple-launch-1536x2048.png">
+  <!-- iPad Pro 10.5" (1668px x 2224px) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+    href="assets/imgs/apple-launch-1668x2224.png">
+  <!-- iPad Pro 12.9" (2048px x 2732px) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+    href="assets/imgs/apple-launch-2048x2732.png">
+
+  <!-- cordova.js required for cordova apps (remove if not needed) -->
+  <!--   <script src="cordova.js"></script> -->
+
+  <!-- un-comment this code to enable service worker -->
+  <script>
+    // make the whole serviceworker process into a promise so later on we can
+    // listen to it and in case new content is available a toast will be shown
+    window.isUpdateAvailable = new Promise(function (resolve, reject) {
+      // lazy way of disabling service workers while developing
+      if ('serviceWorker' in navigator && ['localhost', '127'].indexOf(location.hostname) === -1) {
+        // register service worker file
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => {
+            reg.onupdatefound = () => {
+              const installingWorker = reg.installing;
+              installingWorker.onstatechange = () => {
+                switch (installingWorker.state) {
+                  case 'installed':
+                    if (navigator.serviceWorker.controller) {
+                      // new update available
+                      resolve(true);
+                    } else {
+                      // no update available
+                      resolve(false);
+                    }
+                    break;
+                }
+              };
+            };
+          })
+          .catch(err => console.error('[SW ERROR]', err));
+      }
+    });
+
+    // Update:
+    // this also can be incorporated right into e.g. your run() function in angular,
+    // to avoid using the global namespace for such a thing.
+    // because the registering of a service worker doesn't need to be executed on the first load of the page.
+
+
+    window['isUpdateAvailable']
+      .then(isAvailable => {
+        if (isAvailable) {
+          //location.reload(true)
+          /*  const toast = this.toastCtrl.create({
+             message: 'New Update available! Reload the webapp to see the latest juicy changes.',
+             position: 'bottom',
+             showCloseButton: true,
+           });
+           toast.present(); */
+        }
+      });
+      
+  </script>
+
+  <link href="build/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <!-- The vendor js is generated during the build process
+       It contains all of the dependencies in node_modules -->
+  <script src="build/vendor.js"></script>
+
+  <!-- The main bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+</body>
+
+</html>

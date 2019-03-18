@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Saldo y Movimientos</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="sdomovscat">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <p style="color:#000000;">
+          Pantalla para consulta de saldo y movimientos de la categoría.
+          <br><br>
+
+          Usá los botones '+/-' para ocultar y mostrar tanto filtros como movimientos. <br><br>
+          Con la lupa podés realizar la búsqueda de acuerdo a los filtros.<br><br>
+          También haciendo click en la impresora podés obtener en pdf los movimientos filtrados.
+
+        </p><br>
+        <ion-item-divider color="light" id="sdomovscat1">
+          Saldo de la categoría:
+        </ion-item-divider>
+        <div>
+          <ion-item color="none" icon-start>
+            <ion-icon name="cash" item-left></ion-icon>
+            $ {{cuenta.saldo}}
+          </ion-item>
+        </div><br>
+        <ion-item-divider color="light" id="filtros">
+          Filtros
+          <button ion-button item-end class="btn-print" type="button" (click)="reset()" icon-only>
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+          <button ion-button item-end class="btn-print" type="button" (click)="filtrar()" icon-only>
+            <ion-icon name="search"></ion-icon>
+          </button>
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('filtros')">{{btnFiltros}}</button>
+        </ion-item-divider>
+        <ng-container *ngIf="verFiltros">
+
+          <ion-item>
+            <ion-label>
+              <strong>Tipo:</strong>
+            </ion-label>
+            <ion-select okText="Ok" cancelText="Cancelar" required [(ngModel)]="tipoSeleccionado" name="tipoSeleccionado"
+              placeholder="Seleccione tipo">
+              <ion-option *ngFor="let t of tipo" [id]="t.id" [value]="t.value">{{t.value}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <strong>Concepto:</strong>
+            </ion-label>
+            <ion-select required okText="Ok" cancelText="Cancelar" class="select-concepto" required [(ngModel)]="concepto"
+              name="concepto" placeholder="Seleccione concepto">
+              <ion-option *ngFor="let c of listaConceptos" [id]="c._id" [value]="c">
+                {{c.nombre}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <strong>Fecha Desde:</strong>
+            </ion-label>
+            <ion-input text-right type="date" #fdesde="ngModel" placeholder="Ej: 01/02/2019" name="fdesde" [(ngModel)]="fDesdeTxt"
+              required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <strong>Fecha Hasta:</strong>
+            </ion-label>
+            <ion-input text-right type="date" #fhasta="ngModel" placeholder="Ej: 28/02/2019" name="fhasta" [(ngModel)]="fHastaTxt"
+              required>
+            </ion-input>
+          </ion-item>
+
+        </ng-container>
+        <ion-item-divider color="light" id="sdomovscat2">
+          Movimientos:
+          <button ion-button item-end class="btn-print" type="button" (click)="exportarPDF()" icon-only>
+            <ion-icon name="print"></ion-icon>
+          </button>
+          <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('verMovs')">{{btnMovs}}</button>
+        </ion-item-divider>
+        <ng-container *ngIf="verMovs">
+          <ion-list>
+            <ion-item-sliding *ngFor="let mov of cuenta.movimientos">
+              <ion-item color="none" id="mov._id" icon-start>
+                <ion-icon name="calculator" item-left></ion-icon>
+                <label><b>Fecha:</b></label> {{mov.fecha | date:'dd-MM-yyyy'}} <br>
+                <label><b>Concepto:</b></label> {{mov.concepto}} <br>
+                <label><b>Monto:</b></label> $ {{mov.monto}}<br>
+                <label><b>Usuario:</b></label> {{mov.usuario}}<br>
+                <label><b>Estado:</b></label> {{mov.estado}}<br>
+              </ion-item>
+              <ion-item-options side="right">
+                <button ion-button color="positive" (click)="verDetalle(mov,cuenta)">
+                  Ver Detalle
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

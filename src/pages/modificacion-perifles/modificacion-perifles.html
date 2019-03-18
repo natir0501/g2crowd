@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Modificación de Perfil
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding id="page12">
+  <form id="altausuario-form12" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+
+          <div id="altaDeUsuario-markdown9" class="show-list-numbers-and-dots titulo">
+            <p style="color:#000000;">
+              <strong>
+                Realice las modificaciones en los perfiles para el usuario.
+              </strong>
+            </p>
+            <p style="color:#000000;">
+              <strong>
+                Actualmente el usuario cuenta con éstos perfiles:
+              </strong>
+            </p>
+            <p style="color:#000000;" *ngFor="let perfil of usuario.perfiles">
+              <strong>
+                {{listarRol(perfil)}}
+              </strong>
+            </p>
+          </div>
+
+          <ion-list id="altaDeUsuario-list9">
+            <ion-item-divider color="light" id="altaDeUsuario-list-item-divider11">
+              Usuario: {{mostrarUsuario(usuario)}}
+            </ion-item-divider>
+            <ion-item>
+              <ion-label>{{usuario.activo? 'Desactivar usuario':'Activar usuario'}}</ion-label>
+              <ion-toggle #activo="ngModel" name="activo" [(ngModel)]="usuario.activo"></ion-toggle>
+            </ion-item>
+            <ion-item id="altaDeUsuario-select9">
+              <ion-label>
+                Cat. cobro cuota
+              </ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" required [(ngModel)]="usuario.categoriacuota" name="categoriacuota">
+                <ion-option *ngFor="let categoria of categoriasCuotas" [id]="categoria._id" [value]="categoria._id">
+                  {{categoria.nombre}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+            
+            <ion-item *ngFor="let cat of categorias" id="altaDeUsuario-select7">
+                <ion-label>
+                  {{cat.nombre}}
+                </ion-label>
+                <ion-select okText="Ok" cancelText="Cancelar" multiple="true"  [(ngModel)]="perfiles[cat._id]" name="roles" 
+                >
+                  <ion-option *ngFor="let rol of rolesBack" [disabled]="rol.codigo == 'DIN'" [id]="rol._id" [value]="rol._id">{{rol.nombre}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+          </ion-list>
+         
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button id="altaDeUsuario-button13" type="submit" ion-button block color="positive" [disabled]="form.form.invalid">
+            Confirmar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

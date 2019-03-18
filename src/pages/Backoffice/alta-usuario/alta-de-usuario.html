@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Alta de usuario
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding id="page12">
+  <form id="altausuario-form12" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+
+          <div id="altaDeUsuario-markdown9" class="show-list-numbers-and-dots titulo">
+            <p style="color:#000000;">
+                Ingrese los datos básicos del usuario para darlo de alta en el sistema.
+            </p>
+          </div>
+
+          <ion-list id="altaDeUsuario-list9">
+            <ion-item-divider color="light" id="altaDeUsuario-list-item-divider11">
+              Datos básicos para el alta:
+            </ion-item-divider>
+            <ion-item [ngClass]="{'ng-touched' : email.touched}" id="altaDeUsuario-input16">
+              <ion-label>
+                E-mail:
+              </ion-label>
+              <ion-input text-right type="text" placeholder="ej: juan.perez@tuequipo.com.uy" name="email" email [(ngModel)]="usuario.email"
+                #email="ngModel" required>
+              </ion-input>
+            </ion-item>
+            <ion-item id="altaDeUsuario-select9">
+              <ion-label>
+                Cat. cobro cuota
+              </ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar" required [(ngModel)]="usuario.categoriacuota" name="categoriacuota">
+                <ion-option *ngFor="let categoria of categorias" [id]="categoria._id" [value]="categoria._id">
+                  {{categoria.nombre}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item-divider color="light" id="altaDeUsuario-list-item-divider11">
+                Elija rol de usuario por categoría:
+            </ion-item-divider>
+            <ion-item *ngFor="let cat of categorias" id="altaDeUsuario-select7">
+                <ion-label>
+                  {{cat.nombre}}
+                </ion-label>
+                <ion-select okText="Ok" cancelText="Cancelar" multiple="true" required [(ngModel)]="perfiles[cat._id]" name="roles"
+                  [selectedText]="perfiles[cat._id].join(', ')">
+                  <ion-option *ngFor="let rol of roles" [disabled]="rol.id == 'DIN'" [id]="rol.id" [value]="rol.id">{{rol.value}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+          </ion-list>
+          <div id="altaDeUsuario-markdown11" class="show-list-numbers-and-dots">
+            <p style="color:#665C5C;">
+              Al confirmar se enviará un mail al usuario con la invitación para acceder a la aplicación
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button id="altaDeUsuario-button13" type="submit" ion-button block color="positive" [disabled]="form.form.invalid">
+            Confirmar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{puedeEditar()?'Mantenimiento de campeonatos':'Consulta de Fixture'}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <form id="altaCamp-form3" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <div id="alta-markdown3" class="show-list-numbers-and-dots">
+            <p style="color:#000000;">
+              Completar los siguientes datos para dar de alta/modificar un campeonato:
+            </p>
+            <p style="color:#000000;">
+                Para consultar los datos de la fecha deslice el registro hacia la izquierda
+            </p>
+          </div>
+          <ng-container *ngIf="puedeEditar()">
+            <ion-item-divider color="light" id="altaCamp-list-item-divider3">
+              Datos básicos:
+            </ion-item-divider>
+            <ion-item [ngClass]="{'ng-touched' : nombre.touched}" id="altaCamp-input13">
+              <ion-label>
+                Nombre:
+              </ion-label>
+              <ion-input text-right type="text" placeholder="Ej: Pre-Senior LUD 2019" name="nombre" nombre [(ngModel)]="campeonato.nombre"
+                #nombre="ngModel" required>
+              </ion-input>
+            </ion-item>
+            <ion-item [ngClass]="{'ng-touched' : anio.touched}" id="altaCamp-input14">
+              <ion-label>
+                Año:
+              </ion-label>
+              <ion-input text-right type="text" placeholder="Ej: 2019" name="anio" anio [(ngModel)]="campeonato.anio"
+                #anio="ngModel" required>
+              </ion-input>
+            </ion-item>
+          </ng-container>
+          <ng-container *ngIf="!puedeEditar()">
+            <ion-item-divider color="light" id="altaCamp-list-item-divider3">
+              Datos básicos:
+            </ion-item-divider>
+            <ion-item>
+              <ion-icon name="football"></ion-icon>
+              <b>Nombre: </b><span item-end>{{campeonato.nombre}}</span>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="calendar"></ion-icon>
+              <b>Año: </b><span item-end>{{campeonato.anio}}</span>
+            </ion-item>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <ion-item-divider color="light" id="altaCamp-list-item-divider3">
+            Fechas:
+
+            <button *ngIf="puedeEditar()&& hayCampeonato()" ion-button item-end class="btn-mostrar" type="button"
+              (click)="agregarFecha()">+</button>
+          </ion-item-divider>
+          <ion-list>
+            <ion-item-sliding *ngFor="let fech of fechas">
+              <ion-item color="none" id="fech._id" icon-start>
+                <ion-icon name="calendar" item-left></ion-icon>
+                <b>Fecha N°:</b> {{fech.numeroFecha}} <br>
+                <b>Rival:</b> {{fech.partido.rival}} <br>
+              </ion-item>
+              <ion-item-options side="right">
+                <button *ngIf="puedeEditar()" type="button" ion-button color="positive" (click)="editarFecha(fech)">
+                  Editar
+                </button>
+                <button type="button" ion-button color="positive" (click)="consultarFecha(fech)">
+                  Consultar
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button *ngIf="puedeEditar()" id="altaCamp-button4" type="submit" ion-button block color="positive"
+            [disabled]="form.form.invalid">
+            Guardar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

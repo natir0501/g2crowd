@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Conceptos de caja
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="altaConceptosDeCaja-markdown3" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">
+            A continuación se listan los conceptos de caja existentes en el sistema.
+            <br>
+            Para agregar nuevos seleccione la opción "Nuevo concepto", para editar un concepto deslice el registro
+            hacia la izquierda y seleccione "Modificar".
+          </p>
+        </div>
+        <ion-item-divider color="light" id="altaConceptosDeCaja-list-item-divider3">
+          Listado de conceptos de caja:
+        </ion-item-divider>
+        <ion-list>
+          <ion-item-sliding *ngFor="let conc of conceptos">
+            <ion-item color="none" id="conc._id" icon-start>
+              <ion-icon name="calculator" item-left></ion-icon>
+              {{conc.nombre}}
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="positive" (click)="modificarConcepto(conc)">
+                Modificar
+              </button>
+              <button ion-button color="positive"></button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col col-xl-2>
+        <button id="altaConceptosDeCaja-button4" (click)="irAlta()" ion-button block color="positive">
+          Nuevo concepto
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

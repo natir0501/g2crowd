@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Modificación Perfiles y Password
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="altaConceptosDeCaja-markdown3" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">
+            Estos son los usuarios de la categoría: <b>{{categoria.nombre}}</b>.
+            <br><br>
+            Para modificar deslice el registro
+            hacia la izquierda y seleccione "Perfiles" o "Password".
+            La modificación de password solo estará presente en usuarios activos.
+
+          </p>
+          <br>
+        </div>
+        <ion-item-divider color="light" id="altaConceptosDeCaja-list-item-divider3">
+          Listado de usuarios:
+        </ion-item-divider>
+        <ion-list>
+          <ion-item-sliding *ngFor="let u of usuarios">
+            <ion-item color="none" id="u._id" icon-start>
+              <ion-icon name="user" item-left></ion-icon>
+              {{mostrarUsuario(u)}}
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="positive" (click)="modificarPerfil(u)">
+                Perfiles
+              </button>
+              <button *ngIf="u.activo" ion-button color="positive" (click)="modificarPassword(u)">
+                Password
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>

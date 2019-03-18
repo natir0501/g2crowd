@@ -1,0 +1,14 @@
+{
+  "name": "tuEquipo App",
+  "short_name": "tuEquipo",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/tu_equipo_logo_rounded.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#006e81",
+  "theme_color": "#006e81",
+  "gcm_sender_id": "103953800507"
+}

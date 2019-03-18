@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+       Campeonatos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="pagecamps">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="pagecamps-markdown3" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">
+            A continuación se listan los campeonatos cargados en el sistema.
+            <br><br>
+            Para agregar nuevos seleccione la opción "Nuevo Campeonato" para editar datos o acceder al 
+            mantenimiento deslice el registro hacia la izquierda y seleccione la opción "editar"
+          </p>
+        </div>
+        <ion-item-divider color="light" id="pagecamps-list-item-divider3">
+          Listado de campeonatos:
+        </ion-item-divider>
+        <ion-list>
+          <ion-item-sliding *ngFor="let camp of campeonatos">
+            <ion-item color="none" id="camp._id" icon-start>
+              <ion-icon name="football" item-left></ion-icon>
+              {{camp.anio}} {{camp.nombre}}
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="positive" (click)="editarCampeonato(camp)">
+                Editar
+              </button>
+              <button ion-button color="positive"></button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col col-xl-2>
+        <button id="pagecamp-button4" *ngIf="puedoAgregar()" (click)="irAltaCamp()" ion-button block color="positive">
+          Nuevo campeonato
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

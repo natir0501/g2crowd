@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mantenimiento Tipo de Eventos</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding="pagetipevent">
+  <form id="manttipevent-form" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <ion-item-divider color="light" id="manttipevent-list-item-divider3">
+            Ingrese un nombre para crear un nuevo tipo de evento:
+          </ion-item-divider>
+          <ion-item  [ngClass]="{'ng-touched' : nombre.touched}">
+            <ion-label [class]="!habilitado? 'disabled' : ''">
+              Nombre:
+            </ion-label>
+            <ion-input [disabled]="!habilitado" text-right type="text" placeholder="Ej: Partido amistoso" name="nombre" nombre [(ngModel)]="tipoEvento.nombre"
+              #nombre="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-item >
+            <ion-label>Registra datos DT</ion-label>
+            <ion-checkbox [disabled]="!habilitado" item-end name="datosDeportivos" datosDeportivos [(ngModel)]="tipoEvento.datosDeportivos"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button id="manttipevent-btn" type="submit" ion-button block color="positive" [disabled]="form.form.invalid || !habilitado">Guardar</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

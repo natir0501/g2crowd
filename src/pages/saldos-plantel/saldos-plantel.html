@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Plantel
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="altaConceptosDeCaja-markdown3" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">
+            Estos son los jugadores de la categoría: <b>{{categoria.nombre}}</b>.
+            <br><br>
+            Se muestra nombre y saldo de cuenta cada jugador.
+          </p>
+        </div>
+        <ion-item-divider color="light" id="altaConceptosDeCaja-list-item-divider3">
+          Listado de jugadores:
+          <button ion-button item-end class="btn-print" type="button" (click)="exportarPDF()" icon-only>
+            <ion-icon name="print"></ion-icon>
+          </button>
+        </ion-item-divider>
+        <ion-list>
+
+          <ion-item *ngFor="let u of usuarios" color="none" id="u._id" icon-start>
+            <ion-icon name="person" item-left></ion-icon>
+            <ion-label>{{mostrarUsuario(u)}}</ion-label>  
+            <ion-label text-right>{{'$ ' + u.cuenta.saldo}} </ion-label>
+          </ion-item>
+
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

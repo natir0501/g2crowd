@@ -1,0 +1,244 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+ion-alert{
+    .alert-message {
+        overflow-y: unset !important;
+    }
+}
+ion-menu {
+
+
+.avatar-list{
+    position: relative;
+    //padding: 7% 35% 0 33%;
+    padding: 20px 10px 10px 10px;
+    background-color: #000;
+    
+
+    ion-list{
+        padding-top:10px !important;
+    }
+    .avatar-content {
+        position: relative;
+        z-index: 4;
+
+        ion-list {
+            margin-bottom: 0 !important;
+        }
+    }
+    .avatar-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, .4), rgba(0, 0, 0, .4), rgba(0, 0, 0, .7));
+        //background: red;
+    }
+    .avatar{
+      width:7em;
+      //height:6.5em;
+      //border: thin solid darken(map-get($colors, menuColor), 40%);
+      //border-radius: 50%;
+    }
+    .textStyle{
+      color: map-get($colors, myFontColor);
+      text-align:center;
+      margin:0;
+    }
+    p{
+      @extend .textStyle;
+      font-size: large;
+    }
+    div{
+      @extend .textStyle;
+      font-size: smaller;
+    }
+  }
+  
+  .menu{
+    background-color: white ;
+    color: map-get($colors, myFontColor);
+  }
+  
+  .item{
+    color: map-get($colors, myFontColor);
+    background-color: white ;
+    font-weight: normal;
+  }
+  .toolbar-title{
+    overflow:visible;
+  }
+  .menu-inner{
+    background: white !important;
+  }
+  .sub-items{
+    
+    padding-left: 50px;
+    line-height: 1em;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  button.sub-items{
+        background: white !important;
+        color: black !important;
+      
+  }
+      
+  
+  ion-list .item.sub-items[hidden]{
+    line-height: 0;
+  }
+  .item.item-block.item-md{
+    background-color: white;
+    ion-label{
+        color: #000 !important;
+        font-weight: 400;
+        
+    }
+    ion-badge{
+        background-color: #006e81 !important;
+        color: white !important;
+        ion-icon{
+            padding-right: 0;
+        }
+    }
+        
+        &.active{
+            background-color: #f8f8f8;
+            ion-label{
+                color: #006e81 !important;
+                
+            }
+            ion-badge{
+                background-color: white !important;
+                color: #006e81 !important;
+                ion-icon{
+                    padding-right: 0;
+                }
+            }
+            
+        }
+
+        &.sub-items{
+            ion-label{
+                color: #05050594 !important;
+                font-weight: 500;
+                
+            }
+            ion-badge{
+                background-color: #fde645 !important;
+                color: #050e61 !important;
+                ion-icon{
+                    padding-right: 0;
+                }
+            }
+        }
+        
+  }
+ 
+  
+  .menu-icon{
+    background-color: map-get($colors, menuColor);
+    color: map-get($colors, myFontColor);
+  }
+  .badge-value{
+    color: map-get($colors, myFontColor);
+  }
+
+    .user {
+        padding-top: 15px;
+        font-size: large;
+        color: #fff !important;
+        font-weight: 600;
+        text-align: left !important;
+        font-size: 18px !important;
+    }
+    .role {
+        font-size: 14px !important;
+        font-weight: 400;
+        color: #eee !important;
+        text-align: left !important;
+    }
+    .nombre-cat{
+        font-size: 14px !important;
+        font-weight: 400;
+        color: #eee !important;
+        text-align: right !important;
+    }
+    .avatar{
+        cursor: pointer;
+    }
+
+    .salir{
+        div{
+            color:#80829cf0;
+            font-size: 18px !important;
+        }
+        ion-icon{
+            color:#80829cf0;
+            font-size: 18px !important;
+            
+        }
+        
+    }
+    
+}
+
+.menu-info{
+    
+   
+    margin-right: 4px;
+    margin-left: 3px;
+
+}
+.yourtoastclass {
+    .toast-wrapper {
+      background: #006e81;
+     
+      border-radius: 5px;
+      text-align: center;
+    }
+    .toast-message {
+      
+      color: white;
+    }
+}
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}

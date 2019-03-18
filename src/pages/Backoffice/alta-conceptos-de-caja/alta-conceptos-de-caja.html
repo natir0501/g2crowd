@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Alta conceptos de caja
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <form id="altaConceptosDeCaja-form3" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+
+
+          <div id="altaConceptosDeCaja-markdown3" class="show-list-numbers-and-dots">
+            <p style="color:#000000;">
+              Completar los siguientes datos para crear un nuevo concepto de caja:
+            </p>
+          </div>
+          <ion-item-divider color="light" id="altaConceptosDeCaja-list-item-divider3">
+            Datos básicos:
+          </ion-item-divider>
+
+          <ion-item [ngClass]="{'ng-touched' : nombre.touched}" id="altaConceptosDeCaja-input13">
+            <ion-label [class]="!habilitado? 'disabled' : ''">
+              Nombre:
+            </ion-label>
+            <ion-input text-right type="text"  [disabled]="!habilitado" placeholder="Ej: Pago Preparador físico" name="nombre" nombre [(ngModel)]="concepto.nombre"
+              #nombre="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-item id="altaConceptosDeCaja-select1">
+            <ion-label>
+              Tipo de movimiento:
+            </ion-label>
+            <ion-select [disabled]="!habilitado" okText="Ok" cancelText="Cancelar" required [(ngModel)]="concepto.tipo" name="tipo">
+              <ion-option *ngFor="let pos of tipo" [id]="pos.id" [value]="pos.id">{{pos.value}}</ion-option>
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button id="altaConceptosDeCaja-button4" type="submit" ion-button block color="positive" [disabled]="form.form.invalid || !habilitado">
+            Guardar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

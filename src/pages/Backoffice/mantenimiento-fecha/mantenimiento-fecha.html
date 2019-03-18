@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Mantenimiento de Fechas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="pageMantfecha">
+  <form id="mantFecha-form3" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <div id="altafecha-markdown3" class="show-list-numbers-and-dots">
+            <p style="color:#000000;">
+              Completar los siguientes datos para dar de alta/modificar una fecha:
+            </p>
+          </div>
+          <ion-item-divider color="light" id="altaCamp-list-item-divider3">
+            Datos básicos:
+          </ion-item-divider>
+          <ion-item [ngClass]="{'ng-touched' : numeroFecha.touched}" id="altafecha-input13">
+            <ion-label>
+              Número Fecha:
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: 1" pattern="^(2[0-6]|[1][0-9]|[1-9])$" name="numeroFecha" 
+              [(ngModel)]="fecha.numeroFecha" #numeroFecha="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{'ng-touched' : fechaEncuentro.touched}" id="altafecha-input14">
+            <ion-label>
+              Día y hora:
+            </ion-label>
+            <ion-input text-right type="datetime-local" placeholder="" #fechaEncuentro="ngModel" name="fechaEncuentro"
+              [(ngModel)]="fechaEncuentrotxt" required>
+            </ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{'ng-touched' : fecha.rueda}" id="altafecha-input15">
+            <ion-label>
+              Rueda:
+            </ion-label>
+            <ion-select okText="Ok" cancelText="Cancelar" required [(ngModel)]="fecha.rueda" name="rueda">
+              <ion-option *ngFor="let pos of rueda" [id]="pos.id" [value]="pos.id">{{pos.value}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item-divider color="light" id="altaCamp-list-item-divider3">
+            Datos del partido:
+          </ion-item-divider>
+          <ion-item id="altaFecha-input15" [ngClass]="{'ng-touched' : rival.touched}">
+            <ion-label>
+              Rival:
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: Club Naval" name="rival" [(ngModel)]="fecha.partido.rival"
+              #rival="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Somos locales?:</ion-label>
+            <ion-checkbox item-end name="local" [(ngModel)]="fecha.partido.local"></ion-checkbox>
+          </ion-item>
+          <ion-item-divider color="light" id="altaCamp-list-item-divider3">
+            Datos de Ubicación:
+          </ion-item-divider>
+          <ion-item id="altaFecha-input16" [ngClass]="{'ng-touched' : nombre.touched}">
+            <ion-label>
+              Lugar:
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: Cancha Club Naval" name="nombre" [(ngModel)]="fecha.partido.lugar.nombre"
+              #nombre="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-item id="altaFecha-input17" [ngClass]="{'ng-touched' : direccion.touched}">
+            <ion-label>
+              Dirección:
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej:  Gral. French 1641" name="direccion" [(ngModel)]="fecha.partido.lugar.direccion"
+              #direccion="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <ion-item id="altaFecha-input18" [ngClass]="{'ng-touched' : link.touched}">
+            <ion-label>
+              Link Ubicación:
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: https://goo.gl/maps/QEtNhiPCmas" name="link" [(ngModel)]="fecha.partido.lugar.linkUbicacion"
+              #link="ngModel" required>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button id="altaCamp-button4" type="submit" ion-button block color="positive" [disabled]="form.form.invalid">
+            Guardar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

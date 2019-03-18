@@ -1,0 +1,15 @@
+page-mantenimiento-campeonatos {
+
+    .btn-mostrar{
+        background: transparent;
+        box-shadow: none;
+        color: black;
+        font-size: large !important;
+    }
+    ion-item, ion-item-divider{
+        .button-md:hover:not(.disable-hover) {
+            background-color: #9c9da700;
+        }
+    }
+
+}

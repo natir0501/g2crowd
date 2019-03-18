@@ -1,0 +1,30 @@
+page-saldo-movimientos-categoria {
+   
+    .btn-mostrar{
+        background: transparent;
+        box-shadow: none;
+        color: black;
+        font-size: large !important;
+    }
+    
+    ion-item, ion-item-divider{
+        .button-md:hover:not(.disable-hover) {
+            background-color: #9c9da700;
+        }
+    }
+    .btn-print{
+        background: transparent;
+        box-shadow: none;
+        color: black;
+        
+    }
+    .select-concepto{
+        padding-left: 0px; 
+    }
+
+    ion-item .icon{
+        font-size: x-large;
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+}

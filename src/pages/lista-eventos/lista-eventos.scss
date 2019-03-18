@@ -1,0 +1,32 @@
+page-lista-eventos{
+    ion-calendar {
+        .today {
+            color: #006e81 !important;
+            font-weight: 600 !important;
+            background: #ffffff !important;
+            box-shadow: none !important;
+        }
+        
+        .eventBlip {
+            background: #006e81 !important;
+            width: 6.5px !important; 
+            height: 6.5px !important;
+            display: inline-block !important;
+            border-radius: 6.5px !important;
+            position: absolute !important;
+            top: 3.5px !important;
+            right: 3.5px !important;
+          }
+        .select {
+            box-shadow: none !important;
+            color: #fff !important;
+            background:#006e81 !important;
+        }
+
+    }
+    .cat-label {
+        max-width: 20px !important;
+        margin-right: 0px;
+    }
+}
+

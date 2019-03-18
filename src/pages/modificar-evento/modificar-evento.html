@@ -1,0 +1,146 @@
+<!--
+  Generated template for the MantenimientoCategoriaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Mantenimiento Evento
+    </ion-title>
+   
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="page5">
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <div id="registro-markdown6" class="show-list-numbers-and-dots">
+            <p class="title">
+              Ingrese los datos del evento, todos los datos son obligatorios.
+              Para continuar al menos debe convocar a un usuario.
+            </p>
+          </div>
+          <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+          <ion-item-divider color="light" id="registro-list-item-divider8">
+            Datos Generales:
+          </ion-item-divider>
+          <ion-item [ngClass]="{ 'ng-touched' : nombre.touched }" fixed id="registro-input15">
+            <ion-label>
+              Nombre
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: Práctica Guille" name="nombre" [(ngModel)]="evento.nombre"
+              #nombre="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item id="altaDeUsuario-select9">
+            <ion-label>
+              Tipo de Evento
+            </ion-label>
+            <ion-select okText="Ok" cancelText="Cancelar" required [(ngModel)]="evento.tipoEvento" name="tipoEvento">
+              <ion-option *ngFor="let tipo of tiposEvento" [id]="tipo._id" [value]="tipo">
+                {{tipo.nombre}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : fnacimiento.touched }" id="registro-input21">
+            <ion-label>
+              Día y hora:
+            </ion-label>
+            <ion-input text-right type="datetime-local" placeholder="" #fnacimiento="ngModel" name="diahora"
+              [(ngModel)]="diahoratxt" required></ion-input>
+          </ion-item>
+
+          <ion-item [ngClass]="{ 'ng-touched' : lugar.touched }" fixed id="registro-input15">
+            <ion-label>
+              Lugar
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: En el Golf" name="lugar" required [(ngModel)]="evento.lugar.nombre"
+              #lugar="ngModel"></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : direccion.touched }" fixed id="registro-input15">
+            <ion-label>
+              Dirección
+            </ion-label>
+            <ion-input text-right type="text" placeholder="Ej: Rambla y Bvar Artigas" required name="direccion" [(ngModel)]="evento.lugar.direccion"
+              #direccion="ngModel"></ion-input>
+          </ion-item>
+          <ion-item [ngClass]="{ 'ng-touched' : linkUbicacion.touched }" fixed id="registro-input15">
+            <ion-label>
+              Link Ubicación
+            </ion-label>
+            <ion-input text-right type="text" [required] = "!mobile()" placeholder="Ej: https://goo.gl/maps/QEtNhiPCmas" name="linkUbicacion"
+              [(ngModel)]="evento.lugar.linkUbicacion" #linkUbicacion="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="evento._id !==''">
+            <ion-label>Notificar cambio:</ion-label>
+            <ion-checkbox item-end name="notificar" [(ngModel)]="notificar"></ion-checkbox>
+          </ion-item>
+
+          <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+
+
+
+          <ion-item-divider color="light">
+            Usuarios{{' ('+ usuarios.length + ')'}}
+            <button ion-button item-end class="btn-mostrar" type="button" (click)="agregarTodos()" icon-only>
+              <ion-icon name="people"></ion-icon>
+            </button>
+            <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('usuarios')">{{btnUsuario}}</button>
+
+          </ion-item-divider>
+          <ng-container *ngIf="verUsuarios">
+            <ion-item *ngFor="let usu of usuarios" fixed icon-end>
+
+              {{descUsu(usu)}}
+              <button ion-button item-end class="btn-mostrar" type="button" (click)="agregar(usu)" icon-only>
+                <ion-icon name="person-add"></ion-icon>
+              </button>
+            </ion-item>
+          </ng-container>
+
+          <ion-item-divider color="light">
+            Convocados{{' ('+ evento.invitados.length + ')'}}
+            <button ion-button item-end class="btn-mostrar" type="button" icon-only (click)="quitarTodos()">
+              <ion-icon name="people"></ion-icon>
+            </button>
+            <button ion-button item-end class="btn-mostrar" type="button" (click)="toggle('invitados')">{{btnInvitados}}</button>
+
+          </ion-item-divider>
+          <ng-container *ngIf="verInvitados">
+            <ion-item *ngFor="let usu of evento.invitados" fixed icon-end>
+
+              {{descUsu(usu)}}
+              <button ion-button item-end class="btn-mostrar" type="button" icon-only (click)="quitar(usu)">
+                <ion-icon name="remove"></ion-icon>
+              </button>
+            </ion-item>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+      <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+      <ion-row justify-content-center>
+
+        <ion-col col-xl-2>
+          <button type="button" [disabled]="evento._id ==='' || nopuedeCancelar() " ion-button="" (click)="confirmarCancelacion()"
+            block color="positive">
+            Borrar
+          </button>
+        </ion-col>
+        <ion-col col-xl-2>
+          <button type="submit" [disabled]="form.form.invalid || !validarForm()" ion-button="" block color="positive">
+            Guardar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

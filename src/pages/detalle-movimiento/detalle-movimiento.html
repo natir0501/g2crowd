@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Detalle de Movimiento
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <ion-item-divider color="light" id="registro-list-item-divider8">
+          Datos del movimiento:
+        </ion-item-divider>
+        <ion-item>
+          Fecha: <span item-end>{{movimiento.fecha | date:'dd-MM-yyyy'}}</span>
+        </ion-item>
+        <ion-item>
+          Concepto: <span item-end>{{movimiento.concepto}}</span>
+        </ion-item>
+        <ion-item>
+          Tipo: <span item-end>{{movimiento.tipo}}</span>
+        </ion-item>
+        <ion-item>
+          Monto: <span item-end>{{movimiento.monto}}</span>
+        </ion-item>
+        <ion-item>
+          Estado: <span item-end>{{movimiento.estado}}</span>
+        </ion-item>
+        <ion-item color="none" id="conc._id" icon-end>
+          <ion-icon [name]="movimiento.confirmado?'checkmark-circle':'close-circle'" item-right></ion-icon>
+          Confirmado:
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Comentario:
+          </ion-label>
+          <span item-end>
+            <ion-textarea disabled="true" [(ngModel)]="movimiento.comentario" rows=5> </ion-textarea>
+          </span>
+        </ion-item>
+        <ion-item>
+          Registrado por: <span item-end>{{movimiento.usuario}}</span>
+        </ion-item>
+        <ng-container *ngIf="movVinculado">
+          <ion-item>
+            <ion-label>
+              Movimiento vinculado:
+            </ion-label>
+            <span item-end>
+              <ion-checkbox disabled="true" item-end name="conf" [(ngModel)]="movVinculado"></ion-checkbox>
+            </span>
+          </ion-item>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row justify-content-center style="margin-top: 20px">
+      <ion-col col-xl-2>
+        <button id="pagecamp-button4" *ngIf="puedoAnular()" (click)="anular()" ion-button block color="positive">
+          Anular
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

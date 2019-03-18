@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar text-center color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Categorías
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding id="page6">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-xl-6>
+          <div id="altaConceptosDeCaja-markdown3" class="show-list-numbers-and-dots">
+            <p style="color:#000000;">
+              Éstas son las categorías existentes en la Institución
+              <br>
+              Para agregar una nueva seleccione la opción "Nueva Categoría" y para editar una deslice el registro
+              hacia la izquierda y seleccione "Modificar".
+            </p>
+          </div>
+          <ion-item-divider color="light" id="altaConceptosDeCaja-list-item-divider3">
+            Listado de categorías:
+          </ion-item-divider>
+          <ion-list>
+            <ion-item-sliding *ngFor="let c of categorias">
+              <ion-item color="none" id="c._id" icon-start>
+                <ion-icon name="football" item-left></ion-icon>
+                {{c.nombre}}
+              </ion-item>
+              <ion-item-options side="right">
+                <button ion-button color="positive" (click)="modificar(c)">
+                  Modificar
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button *ngIf="delegadoInst()"  (click)="irAlta()" ion-button block color="positive">
+            Nueva Categoría
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

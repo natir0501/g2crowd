@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar text-center color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pagos Pendientes</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-xl-6>
+        <div id="pagecamps-markdown3" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">
+            A continuación se listan los pagos pendientes de aprobación
+            <br><br>
+            Deslizá el registro para ver el detalle y confirmar o rechazar el pago. 
+          </p>
+        </div>
+        <ion-item-divider color="light" id="pagecamps-list-item-divider3">
+            Listado de pagos pendientes:
+          </ion-item-divider>
+          <ion-list>
+              <ion-item-sliding *ngFor="let mov of movimientos">
+                <ion-item color="none" id="mov._id" icon-start>
+                  <b>Usuario:  </b> {{mov.usuario.nombre}} {{mov.usuario.apellido}}<br>
+                  <b>Monto:   </b> {{mov.monto}}
+                </ion-item>
+                <ion-item-options side="right">
+                  <button ion-button color="positive" (click)="consultar(mov)">
+                    Ver detalle
+                  </button>
+                  <button ion-button color="positive"></button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

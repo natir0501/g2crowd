@@ -1,0 +1,27 @@
+page-datos-deportivos-lista {
+    ion-calendar {
+        .today {
+            color: #0b15aa !important;
+            font-weight: 600 !important;
+            background: #ffffff !important;
+            box-shadow: none !important;
+        }
+        
+        .eventBlip {
+            background: #0b15aa !important;
+            width: 6.5px !important; 
+            height: 6.5px !important;
+            display: inline-block !important;
+            border-radius: 6.5px !important;
+            position: absolute !important;
+            top: 3.5px !important;
+            right: 3.5px !important;
+          }
+        .select {
+            box-shadow: none !important;
+            color: #fff !important;
+            background:#0b15aa !important;
+        }
+
+    }
+}
