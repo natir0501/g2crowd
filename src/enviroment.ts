@@ -1,9 +1,9 @@
 export const firebaseConfig = {
 
-    apiKey: "AIzaSyBEo-ORP_ExXnqyz9odQLzDmwsAIz7lQYU",
-    authDomain: "ceiapp-bae65.firebaseapp.com",
-    databaseURL: "https://ceiapp-bae65.firebaseio.com",
-    projectId: "ceiapp-bae65",
-    storageBucket: "ceiapp-bae65.appspot.com",
-    messagingSenderId: "248085553994"
+    apiKey: "AIzaSyC53OOrwBqDDbQeq-nYMtrdJydKoSv-8_U",
+    authDomain: "tuequipoapp.firebaseapp.com",
+    databaseURL: "https://tuequipoapp.firebaseio.com",
+    projectId: "tuequipoapp",
+    storageBucket: "tuequipoapp.appspot.com",
+    messagingSenderId: "809832769938"
 };
