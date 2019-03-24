@@ -7,6 +7,7 @@ const rolesRuta = require('./routes/rol-rutas');
 const UsuariosRuta = require('./routes/usuario-rutas');
 const CategoriaRuta = require('./routes/categoria-rutas');
 const ConceptosCaja = require('./routes/conceptosCaja-rutas');
+const Club = require('./routes/club-rutas');
 const { scriptInicial } = require('./Utilidades/script-inicial');
 const tipoEvento = require('./routes/tipoEvento-rutas');
 const cors = require('cors')
@@ -35,6 +36,7 @@ app.use('/api', cuentaRuta);
 app.use('/api', pagosRuta);
 app.use('/api', eventoRuta);
 app.use('/api', fixtureRuta);
+app.use('/api', Club);
 
 let ruta = __dirname
 ruta = ruta.substring(0, ruta.length - 6) + 'www'

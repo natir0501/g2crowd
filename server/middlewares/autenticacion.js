@@ -2,7 +2,7 @@ var {Usuario} = require('./../models/usuario')
 
 var autenticacion = (req, res, next) => {
     
-    if(req.url==='/usuarios/login'){
+    if(req.url==='/usuarios/login' || req.url==='/club'){
       
         next()
     }else{

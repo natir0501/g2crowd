@@ -32,3 +32,10 @@ export enum Ruedas{
     R2 = 'Segunda Rueda'
 }
 
+export enum Deportes{
+    FTL = 'Fútbol',
+    VLY = 'Voley',
+    BQB = 'Basket',
+    HDB = 'HandBall'
+}
+
