@@ -20,7 +20,7 @@ var ClubSchema = mongoose.Schema({
         type: String,
         trim: true
     },
-    email: {
+    emailAdmin: {
         type: String,
         required: true,
         minlength: 1,
@@ -35,8 +35,7 @@ var ClubSchema = mongoose.Schema({
         type: String,
     }],
     avatar: {
-        type: String,
-        required: true
+        type: String
     },
     colores: [{
         type: String

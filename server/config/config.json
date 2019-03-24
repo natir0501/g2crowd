@@ -8,7 +8,7 @@
         "URLAPP": "https://ceiapp-test.herokuapp.com",
         "AMBIENTE": "Desarrollo",
         "PUSHTOKEN": "key=AAAAOcMNI0o:APA91bHamReBWXoEEMRMwA5B7KS8K73DEIhMNJizbIzX1IJ6Eb_LIaBFYdbXhIUHzIEutsD-8sGL4RGB2vgn086rcWqSRsVOpwv4oNwOfffjc9JDc1O1l2wwPijXX89NEZ3TxcR53_3J",
-        "CORREOSDIN": "gab.arpe@gmail.com",
+        "CORREOSDIN": "lostuy@gmail.com",
         "HORABATCH": "59 17 * * *",
         "MESINICIAL":"1",
         "AWAKE": "N"

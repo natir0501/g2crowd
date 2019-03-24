@@ -54,6 +54,7 @@ import { CuentaService } from './../providers/cuenta.service';
 import { MenuService } from './../providers/menu.service';
 import { TipoEventoService } from './../providers/tipoevento.service';
 import { UsuarioService } from './../providers/usuario.service';
+import { ClubService } from './../providers/club.service';
 import { MyApp } from './app.component';
 import { PlantelPage } from './../pages/plantel/plantel';
 
@@ -160,6 +161,7 @@ import { PlantelPage } from './../pages/plantel/plantel';
   providers: [
     FirebaseMessagingProvider,
     UsuarioService,
+    ClubService,
     CategoriaService,
     ConceptoService,
     StatusBar,
