@@ -5,5 +5,7 @@ export class Club{
     emailAdmin?: string
     telContacto?: string
     deportes?: string[] = []
+    colores?: string[] = []
+    avatar?: string
 }
 

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Club } from './../../../models/club.models'
 import { NgForm, NgControl, FormControl } from '@angular/forms';
 import { Deportes } from '../../../models/enum.models';
+import { Colores } from '../../../models/enum.models';
 import { ClubService } from './../../../providers/club.service';
 import { HttpClient } from '@angular/common/http';
 import { UtilsServiceProvider } from '../../../providers/utils.service';
@@ -21,9 +22,10 @@ import { UtilsServiceProvider } from '../../../providers/utils.service';
 })
 export class RegistroClubPage {
 
-  @ViewChild('form') form: NgForm
+  @ViewChild('registroClubForm') registroClubForm: NgForm
   club: Club = new Club()
   deportes = Object.keys(Deportes).map(key => ({ 'id': key, 'value': Deportes[key] }))
+  colores = Object.keys(Colores).map(key => ({ 'id': key, 'value': Colores[key] }))
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private clubServ: ClubService,
@@ -46,4 +48,5 @@ export class RegistroClubPage {
       console.log(err)
     })
   }
+  
 }

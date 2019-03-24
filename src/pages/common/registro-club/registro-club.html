@@ -55,6 +55,13 @@
                 <ion-input text-right type="text" placeholder="Ej: Picaflor 1234" name="direccion" [(ngModel)]="club.direccion"
                   #direccion="ngModel" required></ion-input>
               </ion-item>
+              <ion-item [ngClass]="{ 'ng-touched' : avatar.touched }" fixed id="registro-input19">
+                <ion-label>
+                  Avatar:
+                </ion-label>
+                <ion-input text-right type="file" placeholder="" id="fileLoader" #fileLoader name="files" [(ngModel)]="club.avatar"
+                  #avatar="ngModel" required></ion-input>
+              </ion-item>
               <ion-item [ngClass]="{ 'ng-touched' : deportes.touched }" id="registro-select2">
                 <ion-label>
                   Deportes:
@@ -62,6 +69,15 @@
                 <ion-select okText="Ok" cancelText="Cancelar" multiple="true" required [(ngModel)]="club.deportes"
                   name="deportes" [selectedText]="club.deportes.join(', ')">
                   <ion-option *ngFor="let dep of deportes" [id]="dep.id" [value]="dep.id">{{dep.value}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item [ngClass]="{ 'ng-touched' : colores.touched }" id="registro-select3">
+                <ion-label>
+                  Color predominante:
+                </ion-label>
+                <ion-select okText="Ok" cancelText="Cancelar" multiple="false" required [(ngModel)]="club.colores"
+                  name="colores" [selectedText]="club.colores">
+                  <ion-option *ngFor="let col of colores" [id]="col.value" [value]="col.id">{{col.id}}</ion-option>
                 </ion-select>
               </ion-item>
               <div class="spacer" style="width:300px;height:14px;" id="registro-spacer10"></div>

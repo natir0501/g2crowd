@@ -39,3 +39,11 @@ export enum Deportes{
     HDB = 'HandBall'
 }
 
+export enum Colores{
+    Rojo = '#FF0000',
+    Azul = '#0000FF',
+    Blanco = '#FFFFFF',
+    Negro = '#000000',
+    Amarillo = '#FFFF00',
+    Verde = '#00FF00'
+}
