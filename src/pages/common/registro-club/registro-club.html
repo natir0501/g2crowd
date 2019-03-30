@@ -31,36 +31,40 @@
                 <ion-label>
                   Nombre:
                 </ion-label>
-                <ion-input text-right type="text" placeholder="Ej: Pegale de Punta" name="nombre" [(ngModel)]="club.nombre"
+                <ion-input text-right type="text" placeholder="Ej: Pegale de Punta" 
+                name="nombre" [(ngModel)]="club.nombre" minlength=3 maxlength=20
                   #nombre="ngModel" required></ion-input>
               </ion-item>
               <ion-item [ngClass]="{ 'ng-touched' : telContacto.touched }" fixed id="registro-input16">
                 <ion-label>
                   Teléfono:
                 </ion-label>
-                <ion-input text-right type="text" placeholder="Ej: 099123456" name="telContacto" [(ngModel)]="club.telContacto"
+                <ion-input text-right type="tel" placeholder="Ej: 099123456" 
+                name="telContacto" [(ngModel)]="club.telContacto" minlength=8 maxlength=15
                   #telContacto="ngModel" required></ion-input>
               </ion-item>
               <ion-item [ngClass]="{ 'ng-touched' : emailAdmin.touched }" fixed id="registro-input17">
                 <ion-label>
                   Correo administrador:
                 </ion-label>
-                <ion-input text-right type="text" placeholder="Ej: admin@tuequipo.com.uy" name="emailAdmin" email [(ngModel)]="club.emailAdmin"
+                <ion-input text-right type="email" placeholder="Ej: admin@tuequipo.com.uy" 
+                name="emailAdmin" email [(ngModel)]="club.emailAdmin" minlength=5 maxlength=30
                   #emailAdmin="ngModel" required></ion-input>
               </ion-item>   
               <ion-item [ngClass]="{ 'ng-touched' : direccion.touched }" fixed id="registro-input18">
                 <ion-label>
                   Dirección:
                 </ion-label>
-                <ion-input text-right type="text" placeholder="Ej: Picaflor 1234" name="direccion" [(ngModel)]="club.direccion"
+                <ion-input text-right type="text" placeholder="Ej: Picaflor 1234" 
+                name="direccion" [(ngModel)]="club.direccion" minlength=3 maxlength=50
                   #direccion="ngModel" required></ion-input>
               </ion-item>
-              <ion-item [ngClass]="{ 'ng-touched' : avatar.touched }" fixed id="registro-input19">
+              <ion-item  fixed id="registro-input19">
                 <ion-label>
                   Avatar:
                 </ion-label>
-                <ion-input text-right type="file" placeholder="" id="fileLoader" #fileLoader name="files" [(ngModel)]="club.avatar"
-                  #avatar="ngModel" required></ion-input>
+                <ion-icon name="aperture"></ion-icon>
+                <ion-input  name = "avatar" type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
               </ion-item>
               <ion-item [ngClass]="{ 'ng-touched' : deportes.touched }" id="registro-select2">
                 <ion-label>

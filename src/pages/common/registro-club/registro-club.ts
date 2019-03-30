@@ -26,6 +26,8 @@ export class RegistroClubPage {
   club: Club = new Club()
   deportes = Object.keys(Deportes).map(key => ({ 'id': key, 'value': Deportes[key] }))
   colores = Object.keys(Colores).map(key => ({ 'id': key, 'value': Colores[key] }))
+  file: File;
+  image: string | ArrayBuffer;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private clubServ: ClubService,
@@ -34,11 +36,29 @@ export class RegistroClubPage {
     private util: UtilsServiceProvider) {
   }
 
+  changeListener($event) : void {
+    this.file = $event.target.files[0];
+    this.readThis($event.target);
+    
+  }
+
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.image = myReader.result;
+      console.log(this.image.toString());
+    }
+    myReader.readAsDataURL(file);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistroClubPage');
   }
 
   onSubmit(){
+    //this.club.avatar=this.image.toString();
     this.clubServ.altaClub(this.club).subscribe((resp) => {
       this.util.dispararAlert('Éxito', "Registro realizado correctamente")
       window.location.href = window.location.origin
