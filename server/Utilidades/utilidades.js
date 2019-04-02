@@ -42,14 +42,15 @@ const enviarReporteBatch = async(reporte)=>{
     }
     correos = _.uniq(correos)
     console.log(correos)
+    
     const oauth2Client = new OAuth2(
-        '349297601621-s63gdr5v1ms3kb88ahe5r4glaqire5t0.apps.googleusercontent.com',
-        '4k7UuEp__UAjcVfOsVJtZTe0', // Client Secret
+        '618306918004-5asel1f42qbe5j26thq0p63ipebfifqg.apps.googleusercontent.com',
+        'atgGsj6rBrKimCSB7Aqfu8aE', // Client Secret
         'https://developers.google.com/oauthplayground' // Redirect URL
     );
 
     oauth2Client.setCredentials({
-        refresh_token: '1/1tC904dBJ2cw_-7KUdqe9qroSdRr4Zpz6maMeJEHmQY'
+        refresh_token: '1/R_0xTbenBWlkDLo6YZUDFgZohCwbbxP8H-Ol0WGQTq__G0mkHpiJ6fqZpF1eKA5b'
     });
     const tokens = await oauth2Client.refreshAccessToken()
     const accessToken = tokens.credentials.access_token
@@ -59,10 +60,10 @@ const enviarReporteBatch = async(reporte)=>{
         service: 'gmail',
         auth: {
             type: "OAuth2",
-            user: "appcei.2018@gmail.com",
-            clientId: "349297601621-s63gdr5v1ms3kb88ahe5r4glaqire5t0.apps.googleusercontent.com",
-            clientSecret: "4k7UuEp__UAjcVfOsVJtZTe0",
-            refreshToken: "1/1tC904dBJ2cw_-7KUdqe9qroSdRr4Zpz6maMeJEHmQY",
+            user: "tuequipo.uy@gmail.com",
+            clientId: "618306918004-5asel1f42qbe5j26thq0p63ipebfifqg.apps.googleusercontent.com",
+            clientSecret: "atgGsj6rBrKimCSB7Aqfu8aE",
+            refreshToken: "1/R_0xTbenBWlkDLo6YZUDFgZohCwbbxP8H-Ol0WGQTq__G0mkHpiJ6fqZpF1eKA5b",
             accessToken: accessToken
         }
     });
@@ -74,7 +75,7 @@ const enviarReporteBatch = async(reporte)=>{
     console.log(cuerpo)
                 
     var mailOptions = {
-        from: 'tuEquipo App <appcei.2018@gmail.com>',
+        from: 'tuEquipo App <tuequipo.uy@gmail.com>',
         to: correos,
         subject: 'Reporte cobro cuotas',
         html: cuerpo
@@ -90,13 +91,13 @@ const enviarReporteBatch = async(reporte)=>{
 const enviarCorreoAlta = async (usuario) => {
 
     const oauth2Client = new OAuth2(
-        '349297601621-s63gdr5v1ms3kb88ahe5r4glaqire5t0.apps.googleusercontent.com',
-        '4k7UuEp__UAjcVfOsVJtZTe0', // Client Secret
+        '618306918004-5asel1f42qbe5j26thq0p63ipebfifqg.apps.googleusercontent.com',
+        'atgGsj6rBrKimCSB7Aqfu8aE', // Client Secret
         'https://developers.google.com/oauthplayground' // Redirect URL
     );
 
     oauth2Client.setCredentials({
-        refresh_token: '1/1tC904dBJ2cw_-7KUdqe9qroSdRr4Zpz6maMeJEHmQY'
+        refresh_token: '1/R_0xTbenBWlkDLo6YZUDFgZohCwbbxP8H-Ol0WGQTq__G0mkHpiJ6fqZpF1eKA5b'
     });
     const tokens = await oauth2Client.refreshAccessToken()
     const accessToken = tokens.credentials.access_token
@@ -106,10 +107,10 @@ const enviarCorreoAlta = async (usuario) => {
         service: 'gmail',
         auth: {
             type: "OAuth2",
-            user: "appcei.2018@gmail.com",
-            clientId: "349297601621-s63gdr5v1ms3kb88ahe5r4glaqire5t0.apps.googleusercontent.com",
-            clientSecret: "4k7UuEp__UAjcVfOsVJtZTe0",
-            refreshToken: "1/1tC904dBJ2cw_-7KUdqe9qroSdRr4Zpz6maMeJEHmQY",
+            user: "tuequipo.uy@gmail.com",
+            clientId: "618306918004-5asel1f42qbe5j26thq0p63ipebfifqg.apps.googleusercontent.com",
+            clientSecret: "atgGsj6rBrKimCSB7Aqfu8aE",
+            refreshToken: "1/R_0xTbenBWlkDLo6YZUDFgZohCwbbxP8H-Ol0WGQTq__G0mkHpiJ6fqZpF1eKA5b",
             accessToken: accessToken
         }
     });
@@ -121,7 +122,7 @@ const enviarCorreoAlta = async (usuario) => {
     else {
         ambiente = `[${process.env.AMBIENTE}] - `
     }
-    let url = process.env.URLREGISTRO + `${usuario.tokens[0].token}`
+    let url = process.env.URLAPP + `/#/registro/${usuario.tokens[0].token}`
     let html = `<h2>Hola! Bienvenido/a a tuEquipo app.</h2>
                 <p>Si estás desde una PC, por favor ingresá a este <a href="${url}">Link</a> para completar registro:</p><br>
                 
@@ -143,7 +144,7 @@ const enviarCorreoAlta = async (usuario) => {
                 `
                 
     var mailOptions = {
-        from: 'tuEquipo App <appcei.2018@gmail.com>',
+        from: 'tuEquipo App <tuequipo.uy@gmail.com>',
         to: usuario.email,
         subject: `${ambiente}Confirmación de registro y alta en CEIapp`,
         html
@@ -162,13 +163,13 @@ const enviarCorreoNotificacion = async (usuario, asunto, cuerpo)=>{
     }
     
     const oauth2Client = new OAuth2(
-        '349297601621-s63gdr5v1ms3kb88ahe5r4glaqire5t0.apps.googleusercontent.com',
-        '4k7UuEp__UAjcVfOsVJtZTe0', // Client Secret
+        '618306918004-5asel1f42qbe5j26thq0p63ipebfifqg.apps.googleusercontent.com',
+        'atgGsj6rBrKimCSB7Aqfu8aE', // Client Secret
         'https://developers.google.com/oauthplayground' // Redirect URL
     );
 
     oauth2Client.setCredentials({
-        refresh_token: '1/1tC904dBJ2cw_-7KUdqe9qroSdRr4Zpz6maMeJEHmQY'
+        refresh_token: '1/R_0xTbenBWlkDLo6YZUDFgZohCwbbxP8H-Ol0WGQTq__G0mkHpiJ6fqZpF1eKA5b'
     });
     const tokens = await oauth2Client.refreshAccessToken()
     const accessToken = tokens.credentials.access_token
@@ -178,17 +179,17 @@ const enviarCorreoNotificacion = async (usuario, asunto, cuerpo)=>{
         service: 'gmail',
         auth: {
             type: "OAuth2",
-            user: "appcei.2018@gmail.com",
-            clientId: "349297601621-s63gdr5v1ms3kb88ahe5r4glaqire5t0.apps.googleusercontent.com",
-            clientSecret: "4k7UuEp__UAjcVfOsVJtZTe0",
-            refreshToken: "1/1tC904dBJ2cw_-7KUdqe9qroSdRr4Zpz6maMeJEHmQY",
+            user: "tuequipo.uy@gmail.com",
+            clientId: "618306918004-5asel1f42qbe5j26thq0p63ipebfifqg.apps.googleusercontent.com",
+            clientSecret: "atgGsj6rBrKimCSB7Aqfu8aE",
+            refreshToken: "1/R_0xTbenBWlkDLo6YZUDFgZohCwbbxP8H-Ol0WGQTq__G0mkHpiJ6fqZpF1eKA5b",
             accessToken: accessToken
         }
     });
 
                 
     var mailOptions = {
-        from: 'tuEquipo App <appcei.2018@gmail.com>',
+        from: 'tuEquipo App <tuequipo.uy@gmail.com>',
         to: usuario.email,
         subject: asunto,
         html: cuerpo

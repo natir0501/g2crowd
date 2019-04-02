@@ -3,12 +3,15 @@
         "PORT" : 3000,
         "MONGODB_URI" : "mongodb://localhost:27017/tuEquipo_Dev",
         "JWT_SECRET" : "spodkjfasjakrkl3wjralk32lks",
-        "URLAPI": "http://localhost:3000/api/",
-        "URLREGISTRO": "http://localhost:3000/#/registro/",
-        "URLAPP": "https://ceiapp-test.herokuapp.com",
+        "URLAPP": "http://localhost:3000",
         "AMBIENTE": "Desarrollo",
+<<<<<<< HEAD
         "PUSHTOKEN": "key=AAAAOcMNI0o:APA91bHamReBWXoEEMRMwA5B7KS8K73DEIhMNJizbIzX1IJ6Eb_LIaBFYdbXhIUHzIEutsD-8sGL4RGB2vgn086rcWqSRsVOpwv4oNwOfffjc9JDc1O1l2wwPijXX89NEZ3TxcR53_3J",
         "CORREOSDIN": "lostuy@gmail.com",
+=======
+        "PUSHTOKEN": "key=AAAAvI3LaZI:APA91bH0HLrw7IURXps0Hi_8JrHDnrp2qObdZv59itHukm-Y1rEVOyFu_K922bQ9if7WhWTeZE7-yn73sDeVZRthmcLsTCIpSWgjbv-DSdAApkzsPH78e-ymEP5meEWlSwpK1GzfijeH",
+        "CORREOSDIN": "gab.arpe@gmail.com",
+>>>>>>> f0716666324175c9e17378a643b8e3b2f9dc59b6
         "HORABATCH": "59 17 * * *",
         "MESINICIAL":"1",
         "AWAKE": "N"
