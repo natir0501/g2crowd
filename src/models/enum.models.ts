@@ -32,3 +32,18 @@ export enum Ruedas{
     R2 = 'Segunda Rueda'
 }
 
+export enum Deportes{
+    FTL = 'Fútbol',
+    VLY = 'Voley',
+    BQB = 'Basket',
+    HDB = 'HandBall'
+}
+
+export enum Colores{
+    Rojo = '#FF0000',
+    Azul = '#0000FF',
+    Blanco = '#FFFFFF',
+    Negro = '#000000',
+    Amarillo = '#FFFF00',
+    Verde = '#00FF00'
+}

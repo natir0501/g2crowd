@@ -1,0 +1,101 @@
+<!--
+  Generated template for the RegistroClubPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registro de Club</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form id="registroClub-form" (ngSubmit)="onSubmit()" #form="ngForm">
+    <ion-grid>
+        <ion-row justify-content-center>
+            <ion-col col-xl-6>
+              <div id="registro-markdown6" class="show-list-numbers-and-dots">
+                <p class="title">
+                  Bienvenido, por favor complete el registro de su Club:
+                </p>
+              </div>
+              <div class="spacer" style="width:300px;height:15px;" id="registro-spacer8"></div>
+              <ion-item-divider color="light" id="registro-list-item-divider8">
+                Datos Generales:
+              </ion-item-divider>
+              <ion-item [ngClass]="{ 'ng-touched' : nombre.touched }" fixed id="registro-input15">
+                <ion-label>
+                  Nombre:
+                </ion-label>
+                <ion-input text-right type="text" placeholder="Ej: Pegale de Punta" 
+                name="nombre" [(ngModel)]="club.nombre" minlength=3 maxlength=20
+                  #nombre="ngModel" required></ion-input>
+              </ion-item>
+              <ion-item [ngClass]="{ 'ng-touched' : telContacto.touched }" fixed id="registro-input16">
+                <ion-label>
+                  Teléfono:
+                </ion-label>
+                <ion-input text-right type="tel" placeholder="Ej: 099123456" 
+                name="telContacto" [(ngModel)]="club.telContacto" minlength=8 maxlength=15
+                  #telContacto="ngModel" required></ion-input>
+              </ion-item>
+              <ion-item [ngClass]="{ 'ng-touched' : emailAdmin.touched }" fixed id="registro-input17">
+                <ion-label>
+                  Correo administrador:
+                </ion-label>
+                <ion-input text-right type="email" placeholder="Ej: admin@tuequipo.com.uy" 
+                name="emailAdmin" email [(ngModel)]="club.emailAdmin" minlength=5 maxlength=30
+                  #emailAdmin="ngModel" required></ion-input>
+              </ion-item>   
+              <ion-item [ngClass]="{ 'ng-touched' : direccion.touched }" fixed id="registro-input18">
+                <ion-label>
+                  Dirección:
+                </ion-label>
+                <ion-input text-right type="text" placeholder="Ej: Picaflor 1234" 
+                name="direccion" [(ngModel)]="club.direccion" minlength=3 maxlength=50
+                  #direccion="ngModel" required></ion-input>
+              </ion-item>
+              <ion-item  fixed id="registro-input19">
+                <ion-label>
+                  Avatar:
+                </ion-label>
+                <ion-input  name = "avatar" type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
+                <ion-avatar slot="start"></ion-avatar>
+              </ion-item>
+              <ion-item [ngClass]="{ 'ng-touched' : deportes.touched }" id="registro-select2">
+                <ion-label>
+                  Deportes:
+                </ion-label>
+                <ion-select okText="Ok" cancelText="Cancelar" multiple="true" required [(ngModel)]="club.deportes"
+                  name="deportes" [selectedText]="club.deportes.join(', ')">
+                  <ion-option *ngFor="let dep of deportes" [id]="dep.id" [value]="dep.id">{{dep.value}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item [ngClass]="{ 'ng-touched' : colores.touched }" id="registro-select3">
+                <ion-label>
+                  Color predominante:
+                </ion-label>
+                <ion-select okText="Ok" cancelText="Cancelar" multiple="false" required [(ngModel)]="club.colores"
+                  name="colores" [selectedText]="club.colores">
+                  <ion-option *ngFor="let col of colores" [id]="col.value" [value]="col.id">{{col.id}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <div class="spacer" style="width:300px;height:14px;" id="registro-spacer10"></div>
+            </ion-col>
+        </ion-row>
+      
+      <ion-row justify-content-center>
+        <ion-col col-xl-2>
+          <button [disabled]="form.form.invalid" type="submit" ion-button="" block color="positive">
+            Aceptar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
