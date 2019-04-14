@@ -7,6 +7,8 @@ import { Colores } from '../../../models/enum.models';
 import { ClubService } from './../../../providers/club.service';
 import { HttpClient } from '@angular/common/http';
 import { UtilsServiceProvider } from '../../../providers/utils.service';
+import { FirebaseApp } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the RegistroClubPage page.
@@ -28,27 +30,30 @@ export class RegistroClubPage {
   colores = Object.keys(Colores).map(key => ({ 'id': key, 'value': Colores[key] }))
   file: File;
   image: string | ArrayBuffer;
+  storage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private clubServ: ClubService,
     private http: HttpClient,
     private toast: ToastController,
-    private util: UtilsServiceProvider) {
+    private util: UtilsServiceProvider,
+    private app: FirebaseApp) {
+    this.storage = app.storage();
   }
 
-  changeListener($event) : void {
+  changeListener($event): void {
     this.file = $event.target.files[0];
     this.readThis($event.target);
-    
+
   }
 
   readThis(inputValue: any): void {
-    var file:File = inputValue.files[0];
-    var myReader:FileReader = new FileReader();
-  
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
     myReader.onloadend = (e) => {
       this.image = myReader.result;
-      console.log(this.image.toString());
+
     }
     myReader.readAsDataURL(file);
   }
@@ -57,16 +62,21 @@ export class RegistroClubPage {
     console.log('ionViewDidLoad RegistroClubPage');
   }
 
-  onSubmit(){
-    //this.club.avatar=this.image.toString();
+  onSubmit() {
+
+    this.club.avatar = '/avatar/' + this.club.nombre;
     this.clubServ.altaClub(this.club).subscribe((resp) => {
       this.util.dispararAlert('Éxito', "Registro realizado correctamente")
-      window.location.href = window.location.origin
-      
+      var ref1 = this.storage.ref();
+      var ref = ref1.child('/avatar/' + this.club.nombre);
+      ref.put(this.file).then(function (snapshot) {
+        console.log('Uploaded a blob or file!: ' + snapshot.downloadURL);
+      });
+
     }, (err) => {
       this.util.dispararAlert('Error', "Error al dar de alta, intente nuevamente")
       console.log(err)
     })
   }
-  
+
 }
