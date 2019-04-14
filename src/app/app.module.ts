@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from 'angularfire2';
 import 'firebase/messaging'; // only import firebase messaging or as needed;
+import 'firebase/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { CalendarModule } from 'ionic3-calendar-en';
 import { firebaseConfig } from '../enviroment';

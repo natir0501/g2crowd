@@ -9,14 +9,12 @@ const _ = require('lodash')
 api.post('/club', async (req,res) =>{
     var club = new Club(_.pick(req.body,['nombre','telContacto','direccion','emailAdmin','deportes','avatar','colores']))
     let usuario = new Usuario({ 'email': req.body.emailAdmin, 'delegadoInstitucional': true })
-    var file = fileLoader.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
+
     try{       
         //Creo el usuario administradro como delegado institucional
         
         usuario.generateAuthToken()
-        club.avatar = reader.result;
+
         //Si todo salio bien guardo el club  
         await club.save()
     
